@@ -1,0 +1,214 @@
+
+    <div id="canvas-container"></div>
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel mx-4 mt-4 px-6 py-4">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center">
+                    <i class="fas fa-fire text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold gradient-text">FORGE0</span>
+                    <span class="text-orange-400 text-sm ml-1">(prompts)</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#library" class="text-gray-300 hover:text-white transition">Library</a>
+                <a href="#upload" class="text-gray-300 hover:text-white transition">Upload</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+                <button class="px-6 py-2 bg-gradient-to-r from-orange-500 to-amber-600 rounded-full font-medium hover:shadow-lg hover:shadow-orange-500/30 transition">
+                    <i class="fas fa-plus mr-2"></i>Add Prompt
+                </button>
+            </div>
+        </div>
+    </nav>
+    <section class="min-h-screen flex items-center justify-center relative pt-20">
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="text-center px-4 max-w-4xl mx-auto relative z-10">
+            <div class="floating mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6">
+                    <span class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></span>
+                    <span class="text-sm text-gray-300">500+ Curated AI Prompts</span>
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight"><span class="gradient-text">FORGE0</span></h1>
+            <p class="text-2xl text-orange-400 mb-6 tracking-wider">(prompts)</p>
+            <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Discover, share, and create stunning AI-generated content with our curated library of prompts for images, videos, and more.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#library" class="px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-orange-500/30 transition pulse-glow">
+                    <i class="fas fa-compass mr-2"></i>Explore Library
+                </a>
+                <button class="px-8 py-4 glass-panel rounded-full font-semibold text-lg hover:bg-white/10 transition">
+                    <i class="fas fa-cloud-upload-alt mr-2"></i>Upload Prompt
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+                <div class="text-center"><div class="text-3xl font-bold gradient-text" id="total-prompts">500+</div><div class="text-sm text-gray-400 mt-1">Prompts</div></div>
+                <div class="text-center"><div class="text-3xl font-bold gradient-text">12</div><div class="text-sm text-gray-400 mt-1">Categories</div></div>
+                <div class="text-center"><div class="text-3xl font-bold gradient-text">∞</div><div class="text-sm text-gray-400 mt-1">Possibilities</div></div>
+            </div>
+        </div>
+    </section>
+    <section id="library" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-2">Prompt <span class="gradient-text">Library</span></h2>
+                <p class="text-orange-400 text-sm tracking-wider">FORGE0 (prompts)</p>
+                <p class="text-gray-400 mt-2">Browse our curated collection of AI prompts</p>
+            </div>
+            <div class="glass-panel p-6 mb-8 scroll-reveal">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 relative">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="search-input" placeholder="Search prompts..." class="search-input w-full pl-12 pr-4 py-3 rounded-xl text-white placeholder-gray-500">
+                    </div>
+                    <select id="model-filter" class="search-input px-4 py-3 rounded-xl text-white">
+                        <option value="all">All Models</option>
+                        <option value="midjourney">Midjourney</option>
+                        <option value="dalle">DALL-E</option>
+                        <option value="stable-diffusion">Stable Diffusion</option>
+                        <option value="runway">Runway</option>
+                        <option value="pika">Pika</option>
+                        <option value="sora">Sora</option>
+                    </select>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4" id="category-filters">
+                    <button class="category-btn active px-4 py-2 rounded-full text-sm" data-category="all">All</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="photography">Photography</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="cinematic">Cinematic</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="anime">Anime</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="portrait">Portrait</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="landscape">Landscape</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="fantasy">Fantasy</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="product">Product</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="abstract">Abstract</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="character">Character</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="video">Video</button>
+                    <button class="category-btn px-4 py-2 rounded-full text-sm" data-category="custom">Custom</button>
+                </div>
+            </div>
+            <div id="prompts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+    <section id="upload" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-panel p-8 md:p-12 scroll-reveal">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cloud-upload-alt text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-2">Upload Your <span class="gradient-text">Prompt</span></h2>
+                    <p class="text-orange-400 text-sm tracking-wider">FORGE0 (prompts)</p>
+                    <p class="text-gray-400 mt-2">Share your best AI prompts with the community</p>
+                </div>
+                <form id="upload-form" class="space-y-6">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Prompt Title</label>
+                        <input type="text" id="prompt-title" required="" class="search-input w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="e.g., Cyberpunk Portrait">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Prompt Text</label>
+                        <textarea id="prompt-text" rows="4" required="" class="search-input w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 resize-none" placeholder="Enter your full prompt here..."></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">Category</label>
+                            <select id="prompt-category" class="search-input w-full px-4 py-3 rounded-xl text-white">
+                                <option value="photography">Photography</option>
+                                <option value="cinematic">Cinematic</option>
+                                <option value="anime">Anime</option>
+                                <option value="portrait">Portrait</option>
+                                <option value="landscape">Landscape</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="product">Product</option>
+                                <option value="abstract">Abstract</option>
+                                <option value="character">Character</option>
+                                <option value="video">Video</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">AI Model</label>
+                            <select id="prompt-model" class="search-input w-full px-4 py-3 rounded-xl text-white">
+                                <option value="Midjourney">Midjourney</option>
+                                <option value="DALL-E">DALL-E</option>
+                                <option value="Stable Diffusion">Stable Diffusion</option>
+                                <option value="Runway">Runway</option>
+                                <option value="Pika">Pika</option>
+                                <option value="Sora">Sora</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Tags (comma separated)</label>
+                        <input type="text" id="prompt-tags" class="search-input w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="e.g., cyberpunk, neon, futuristic">
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-orange-500/30 transition">
+                        <i class="fas fa-upload mr-2"></i>Upload Prompt
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center scroll-reveal">
+            <h2 class="text-4xl font-bold mb-2">About <span class="gradient-text">FORGE0</span></h2>
+            <p class="text-orange-400 text-sm tracking-wider mb-6">(prompts)</p>
+            <p class="text-gray-400 text-lg mb-8">FORGE0 (prompts) is a curated library of AI content creation prompts, designed to help creators, artists, and developers unlock the full potential of AI image and video generation tools.</p>
+            <div class="flex justify-center gap-4">
+                <a href="https://github.com" class="px-6 py-3 glass-panel rounded-full hover:bg-white/10 transition flex items-center gap-2">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer class="py-8 px-4 border-t border-white/10">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center">
+                    <i class="fas fa-fire text-white text-sm"></i>
+                </div>
+                <span class="text-xl font-bold gradient-text">FORGE0</span>
+                <span class="text-orange-400 text-xs">(prompts)</span>
+            </div>
+            <p class="text-gray-500 text-sm">© 2024 FORGE0 (prompts). Open source AI prompt library.</p>
+        </div>
+    </footer>
+    <div id="upload-modal" class="modal">
+        <div class="glass-panel p-8 max-w-lg w-full mx-4 relative">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            <h3 class="text-2xl font-bold mb-1">Upload Prompt</h3>
+            <p class="text-orange-400 text-xs tracking-wider mb-4">FORGE0 (prompts)</p>
+            <form id="modal-upload-form" class="space-y-4">
+                <input type="text" id="modal-title" required="" placeholder="Prompt Title" class="search-input w-full px-4 py-3 rounded-xl text-white placeholder-gray-500">
+                <textarea id="modal-text" rows="3" required="" placeholder="Prompt text..." class="search-input w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 resize-none"></textarea>
+                <div class="grid grid-cols-2 gap-4">
+                    <select id="modal-category" class="search-input px-4 py-3 rounded-xl text-white">
+                        <option value="photography">Photography</option>
+                        <option value="cinematic">Cinematic</option>
+                        <option value="anime">Anime</option>
+                        <option value="portrait">Portrait</option>
+                        <option value="landscape">Landscape</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="product">Product</option>
+                        <option value="abstract">Abstract</option>
+                        <option value="character">Character</option>
+                        <option value="video">Video</option>
+                    </select>
+                    <select id="modal-model" class="search-input px-4 py-3 rounded-xl text-white">
+                        <option value="Midjourney">Midjourney</option>
+                        <option value="DALL-E">DALL-E</option>
+                        <option value="Stable Diffusion">Stable Diffusion</option>
+                        <option value="Runway">Runway</option>
+                        <option value="Pika">Pika</option>
+                        <option value="Sora">Sora</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl font-semibold hover:shadow-lg transition">Upload</button>
+            </form>
+        </div>
+    </div>
+    <div id="toast" class="fixed bottom-4 right-4 glass-panel px-6 py-3 rounded-xl transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <span id="toast-message">Notification</span>
+    </div>
+    
+
